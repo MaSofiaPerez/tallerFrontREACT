@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import Boton from './Boton';
+import ToastCustomizado  from './ToastCustomizado';
 import {Container, Row, Form, Col, FormGroup, FormLabel, FormControl, Button, Toast, ToastBody } from 'react-bootstrap'
 
 const Login = () => {
@@ -13,7 +15,7 @@ const Login = () => {
   const verificarContenido = () => {
     const nombre = nombreUsuario.current.value;
     const contrasena = contrasenaUsuario.current.value;
-    setbotonHabilitado(!(nombre && contrasena))
+    setbotonHabilitado((nombre && contrasena))
   }
 
   const TomarDatos = (e) => {
@@ -89,42 +91,23 @@ const Login = () => {
             </Col>
           </Row>
 
-          <div className="d-grid gap-2">
-            <Button variant="secondary" disabled={botonHabilitado} onClick={TomarDatos}>
-              Ingresar
-            </Button>
-          </div>
+          <Boton disabled={botonHabilitado} onClick={TomarDatos} name="Ingresar" />
+       
           <p className='text-center mt-3'>¿Es tu primera vez? <a href="#" className="link-inicio-sesion">¡Registrate!</a></p>
 
-          <Toast
+          <ToastCustomizado
             show={showToast}
-            onClose={() => setShowToast(false)}
-            delay={5000}
-            autohide
-            style={{
-              position: 'fixed',
-              top: '20px',
-              right: '20px',
-              zIndex: '1'
-            }}
-            className={`bg-${toastVariant}`}
-          >
-            <ToastBody><strong>{toastMessage}</strong></ToastBody>
-          </Toast>
+            onClose = {() => setShowToast(false)}
+            message={toastMessage}
+            variant = {toastVariant}
+          />
+
         </Form>
       </div>
     </Container>
 
   )
-  {/*<div id="loginUsuario">
-      <h1>Iniciar Sesión</h1>
-      <p>¿Es tu primera vez? <a href="/">¡Regístrate!</a></p>
-      <form method="post" >
-        <input type="text" onChange={verificarContenido} id="nombreUsuarioLogin" ref={nombreUsuario} placeholder="Usuario" />
-        <input type="password" onChange={verificarContenido}  id="pswUsuarioLogin" ref={contrasenaUsuario} placeholder="Contraseña" />
-        <button type="submit" disabled={botonHabilitado} onClick={TomarDatos}>Ingresar</button>
-      </form>
-    </div>*/}
+
 };
 
 export default Login;

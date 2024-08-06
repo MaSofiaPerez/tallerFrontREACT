@@ -7,7 +7,7 @@ const Contenido = () => {
   return (
     <div>
       <Registro/>
-      <Login/>
+     <Login/>
     </div>
   )
 }

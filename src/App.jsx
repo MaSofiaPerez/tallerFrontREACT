@@ -3,14 +3,13 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Contenido from './Componentes/Contenido'
-import BarraSuperior from './Componentes/BarraSuperior';
+import Contenedor from './Componentes/Contenedor';
 
 
 function App() {
   return (
     <div className='background'>
-      <BarraSuperior />
-      <Contenido/>
+      <Contenedor />
     </div>
   )
 }

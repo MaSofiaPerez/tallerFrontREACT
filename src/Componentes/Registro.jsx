@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react'
 import { useState } from "react"
-import { Container, Form, Row, Col, Button, FormControl, FormGroup, FormLabel, Toast, ToastHeader, ToastBody } from 'react-bootstrap';
+import { Container, Form, Row, Col, Button, FormControl, FormGroup, FormLabel, Toast, ToastBody } from 'react-bootstrap';
+import Boton from './Boton';
+import ToastCustomizado  from './ToastCustomizado';
 
 
 
@@ -113,6 +115,7 @@ const Registro = () => {
     nombreUsuario.current.value = "";
     constrasenaUsuario.current.value = "";
     setidDepartamentoSeleccionado("");
+    setCiudades([])
     setidCiudadSeleccionada("");
   }
 
@@ -175,30 +178,17 @@ const Registro = () => {
               ))}
             </FormControl>
           </FormGroup>
-
-          <div className="d-grid gap-2">
-            <Button variant="secondary" onClick={TomarDatos}>
-              Registrarse
-            </Button>
-          </div>
+          
+          <Boton onClick={TomarDatos} name="Registrarse" />
 
           <p className='text-center mt-3'>¿Ya tienes una cuenta? <a href="#" className="link-inicio-sesion">Inicia Sesión</a></p>
 
-          <Toast
+          <ToastCustomizado
             show={showToast}
-            onClose={() => setShowToast(false)}
-            delay={5000}
-            autohide
-            style={{
-              position: 'fixed',
-              top: '20px',
-              right: '20px',
-              zIndex: '1'
-            }}
-            className={`bg-${toastVariant}`}
-          >
-            <ToastBody><strong>{toastMessage}</strong></ToastBody>
-          </Toast>
+            onClose = {() => setShowToast(false)}
+            message={toastMessage}
+            variant = {toastVariant}
+          />
 
         </Form>
       </div>
