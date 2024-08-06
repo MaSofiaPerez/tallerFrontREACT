@@ -15,7 +15,7 @@ const Login = () => {
   const verificarContenido = () => {
     const nombre = nombreUsuario.current.value;
     const contrasena = contrasenaUsuario.current.value;
-    setbotonHabilitado((nombre && contrasena))
+    setbotonHabilitado(!(nombre && contrasena))
   }
 
   const TomarDatos = (e) => {

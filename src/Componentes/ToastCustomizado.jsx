@@ -13,6 +13,8 @@ export const ToastCustomizado = ({ show, onClose, message, variant }) => {
         }
     }
 
+    //FALTA SACAR EL STYLE Y MANDARLO AL APP.CSS, AUMENTAR EL TAMAÑO DEL ICONO Y MEJORAR EL SIZE DEL CONTENEDOR DEL MENSAJE
+
     return (
         <Toast
             show={show}
